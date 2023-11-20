@@ -41,9 +41,6 @@ export class NewSuperhashlistComponent implements OnInit, OnDestroy {
   /** Form group for the new SuperHashlist. */
   form: FormGroup;
 
-  /** Maximum results for API requests. */
-  private maxResults = environment.config.prodApiMaxResults;
-
   /** List of hashlists. */
   selectHashlists: any;
 
@@ -109,10 +106,10 @@ export class NewSuperhashlistComponent implements OnInit, OnDestroy {
   loadData(): void {
     this.globalService
       .getAll(SERV.HASHLISTS, {
-        maxResults: this.maxResults,
         filter: 'isArchived=false,format=0'
       })
       .subscribe((response: ListResponseWrapper<Hashlist>) => {
+        console.log(response);
         this.selectHashlists = response.values;
         this.isLoading = false;
         this.changeDetectorRef.detectChanges();

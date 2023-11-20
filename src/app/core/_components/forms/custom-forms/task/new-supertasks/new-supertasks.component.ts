@@ -43,9 +43,6 @@ export class NewSupertasksComponent implements OnInit, OnDestroy {
   /** Form group for the new SuperTask. */
   form: FormGroup;
 
-  /** Maximum results for API requests. */
-  private maxResults = environment.config.prodApiMaxResults;
-
   /** List of PreTasks. */
   selectPretasks: any[];
 
@@ -105,7 +102,7 @@ export class NewSupertasksComponent implements OnInit, OnDestroy {
       }
     };
     this.gs
-      .getAll(SERV.PRETASKS, { maxResults: this.maxResults })
+      .getAll(SERV.PRETASKS)
       .subscribe((response: ListResponseWrapper<Task>) => {
         const transformedOptions = this.transformSelectOptions(
           response.values,
