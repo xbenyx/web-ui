@@ -13,10 +13,20 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": {
+          "code": "en-GB"
+        },
+				"locales": {
+					"es-ES": "src/locale/messages.es_ES.xlf"
+				}
+			},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "i18nMissingTranslation": "warning",
+            "i18nDuplicateTranslation": "warning",
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -73,6 +83,9 @@
               ],
               "outputHashing": "all"
             },
+            "en-GB": {
+							"localize": ["en-GB"]
+						},
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -102,7 +115,9 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hashtopolis:build"
+            "browserTarget": "hashtopolis:build",
+            "format": "xlf",
+            "outputPath": "src/locale"
           }
         },
         "test": {
