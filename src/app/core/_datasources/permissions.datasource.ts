@@ -6,6 +6,12 @@ import { ListResponseWrapper } from '../_models/response.model';
 import { SERV } from '../_services/main.config';
 
 export class PermissionsDataSource extends BaseDataSource<GlobalPermissionGroup> {
+  private _globalpermissionId = 0;
+
+  setHashlistId(globalpermissionId: number): void {
+    this._globalpermissionId = globalpermissionId;
+  }
+
   loadAll(): void {
     this.loading = true;
 

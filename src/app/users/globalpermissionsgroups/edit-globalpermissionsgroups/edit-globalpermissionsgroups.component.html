@@ -1,78 +1,62 @@
-<app-page-title [title]="'Global Permission Group - '+editedGPG.name+''"></app-page-title>
-<!-- Table current members -->
-<div class="row g-3">
-  <div class="col-md-5" *ngIf="editedGPG">
-    <grid-main [class]="'width:100%'" [centered]="true">
-      <app-page-subtitle [subtitle]="'Members'"></app-page-subtitle>
-      <div class="table-responsive">
-          <table style="width: 100%" class="table table-striped table-hover table-sm" datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger">
-            <thead class="thead-light">
-              <tr>
-                <th class="rounded-start">ID</th>
-                <th class="rounded-end">Username</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let g of editedGPG.user">
-                <td>
-                {{ g.id }}
-                </td>
-                <td>
-                  <a [routerLink]="['/users/',g.id,'edit']">{{ g.name }}</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-      </div>
-   </grid-main>
-  </div>
-<!-- Set permissions -->
-  <div [ngClass]="editedGPG ? 'col-md-7':'' ">
+<div fxLayout="row" fxLayout.lt-md="column">
+  <div fxFlex="60">
     <grid-main>
-    <app-page-subtitle [subtitle]="'Set Permissions'"></app-page-subtitle>
-    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-      <input-text title="Name" formControlName="name"></input-text>
-      <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <button mat-raised-button color="primary" (click)="toggleAllPermissions(true); preventDefault($event)">Check All</button>
-        <button mat-raised-button color="warn" (click)="toggleAllPermissions(false); preventDefault($event)">Uncheck All</button>
+      <app-page-subtitle [subtitle]="'Set Permissions'"></app-page-subtitle>
+      <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <input-text title="Name" formControlName="name"></input-text>
+        <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <button mat-raised-button color="primary" (click)="toggleAllPermissions(true); preventDefault($event)">Check All</button>
+          <button mat-raised-button color="warn" (click)="toggleAllPermissions(false); preventDefault($event)">Uncheck All</button>
+        </div>
+        <div formGroupName="permissions">
+
+          <ng-container *ngFor="let group of permissionGroups">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <span><b>{{ group.title }}</b></span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <ng-container *ngFor="let subgroup of group.subgroups">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span><b>{{ subgroup.subtitle }}</b></span>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div *ngFor="let permission of subgroup.permissions" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
+                      <input-check [title]="getTitleFromPermission(permission)" [formControlName]="permission"></input-check>
+                    </div>
+
+                  </mat-expansion-panel>
+                </ng-container>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+          </ng-container>
+
       </div>
-      <div formGroupName="permissions">
-
-        <ng-container *ngFor="let group of permissionGroups">
-          <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <span><b>{{ group.title }}</b></span>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-
-              <ng-container *ngFor="let subgroup of group.subgroups">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <span><b>{{ subgroup.subtitle }}</b></span>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-
-                  <div *ngFor="let permission of subgroup.permissions" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
-                    <input-check [title]="getTitleFromPermission(permission)" [formControlName]="permission"></input-check>
-                  </div>
-
-                </mat-expansion-panel>
-              </ng-container>
-
-            </mat-expansion-panel>
-          </mat-accordion>
-        </ng-container>
-
-    </div>
-
-      <grid-buttons>
-        <button-submit [name]="'Update'"></button-submit>
-      </grid-buttons>
-
-    </form>
-  </grid-main>
+        <grid-buttons>
+          <button-submit [name]="'Update'"></button-submit>
+        </grid-buttons>
+      </form>
+    </grid-main>
+  </div>
+  <div fxFlex="40" *ngIf="editedGPG">
+    <app-table>
+      <app-page-title
+        [title]="'Global Permission Group - '+editedGPG.name+''"
+        buttontitle="New"
+        buttonlink="/users/global-permissions-groups/new"
+        [subbutton]="true"
+      ></app-page-title>
+      <permissions-table
+      [hasBulkActions]="false"
+      [hasRowAction]="false"
+      ></permissions-table>
+    </app-table>
   </div>
 </div>
