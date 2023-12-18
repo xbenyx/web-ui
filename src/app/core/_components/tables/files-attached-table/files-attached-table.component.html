@@ -1,0 +1,16 @@
+<ht-table
+  #table
+  name="filesAttachedTable"
+
+  [columnLabels]="columnLabels"
+  [dataSource]="dataSource"
+  [tableColumns]="tableColumns"
+  [isSelectable]="true"
+  [hasBulkActions]="hasBulkActions"
+  [hasRowAction]="hasRowAction"
+  [isFilterable]="true"
+  [filterFn]="filter"
+  [isPageable]="true"
+  (exportActionClicked)="exportActionClicked($event)"
+/>
+<!-- dataType="filesattached" -->

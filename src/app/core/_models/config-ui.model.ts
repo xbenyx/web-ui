@@ -4,6 +4,7 @@ import { AgentsTableCol } from '../_components/tables/agents-table/agents-table.
 import { ChunksTableCol } from '../_components/tables/chunks-table/chunks-table.constants';
 import { CrackersTableCol } from '../_components/tables/crackers-table/crackers-table.constants';
 import { CracksTableCol } from '../_components/tables/cracks-table/cracks-table.constants';
+import { FilesAttachedTableCol } from '../_components/tables/files-attached-table/files-attached-table.constants';
 import { FilesTableCol } from '../_components/tables/files-table/files-table.constants';
 import { HashlistsTableCol } from '../_components/tables/hashlists-table/hashlists-table.constants';
 import { HashtypesTableCol } from '../_components/tables/hashtypes-table/hashtypes-table.constants';
@@ -110,6 +111,12 @@ export const uiConfigDefault: UIConfig = {
       HashtypesTableCol.DESCRIPTION,
       HashtypesTableCol.SALTED,
       HashtypesTableCol.SLOW_HASH
+    ],
+    filesAttachedTable: [
+      FilesAttachedTableCol.ID,
+      FilesAttachedTableCol.NAME,
+      FilesAttachedTableCol.TYPE,
+      FilesAttachedTableCol.SIZE
     ],
     filesTable: [
       FilesTableCol.ID,

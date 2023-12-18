@@ -110,7 +110,7 @@ export class EditPreconfiguredTasksComponent implements OnInit, OnDestroy {
     const loadtableSubscription$ = this.gs
       .getAll(SERV.PRETASKS, params)
       .subscribe((pretasks: any) => {
-        this.files = pretasks.values;
+        this.files = pretasks.values[0].pretaskFiles;
         this.dtTrigger.next(void 0);
       });
 

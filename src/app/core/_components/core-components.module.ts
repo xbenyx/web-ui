@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { CrackersTableComponent } from './tables/crackers-table/crackers-table.component';
 import { CracksTableComponent } from './tables/cracks-table/cracks-table.component';
 import { ExportMenuComponent } from './menus/export-menu/export-menu.component';
+import { FilesAttachedTableComponent } from './tables/files-attached-table/files-attached-table.component';
 import { FilesTableComponent } from './tables/files-table/files-table.component';
 import { HTTableComponent } from './tables/ht-table/ht-table.component';
 import { HTTableTypeDefaultComponent } from './tables/ht-table/type/default/ht-table-type-default.component';
@@ -75,6 +76,7 @@ import { VouchersTableComponent } from './tables/vouchers-table/vouchers-table.c
     HashtypesTableComponent,
     HashlistsTableComponent,
     SuperHashlistsTableComponent,
+    FilesAttachedTableComponent,
     FilesTableComponent,
     CrackersTableComponent,
     PreprocessorsTableComponent,
@@ -132,6 +134,7 @@ import { VouchersTableComponent } from './tables/vouchers-table/vouchers-table.c
     HashlistsTableComponent,
     HashtypesTableComponent,
     SuperHashlistsTableComponent,
+    FilesAttachedTableComponent,
     FilesTableComponent,
     CrackersTableComponent,
     PreprocessorsTableComponent,

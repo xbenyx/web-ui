@@ -6,6 +6,7 @@ export type DataType =
   | 'hashlists'
   | 'chunks'
   | 'hashtypes'
+  | 'filesattached'
   | 'files'
   | 'crackers'
   | 'preprocessors'
