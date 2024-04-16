@@ -25,6 +25,7 @@ import { TasksChunksTableCol } from '../_components/tables/tasks-chunks-table/ta
 import { UsersTableCol } from '../_components/tables/users-table/users-table.constants';
 import { TasksSupertasksDataSourceTableCol } from '../_components/tables/tasks-supertasks-table/tasks-supertasks-table.constants';
 import { VouchersTableCol } from '../_components/tables/vouchers-table/vouchers-table.constants';
+import { ProjectTableCol } from '../_components/tables/project-table/project-table.constants';
 
 export type Layout = 'full' | 'fixed';
 export type Theme = 'light' | 'dark';
@@ -62,6 +63,28 @@ export const uiConfigDefault: UIConfig = {
   theme: 'light',
   timefmt: 'dd/MM/yyyy h:mm:ss',
   tableSettings: {
+    projectsTable: {
+      start: 0,
+      page: 25,
+      columns: [
+        ProjectTableCol.ID,
+        ProjectTableCol.PROJECT_NAME,
+        ProjectTableCol.TASKS,
+        ProjectTableCol.CRACKED,
+        ProjectTableCol.AGENTS,
+        ProjectTableCol.EXPIRY_DATE,
+        ProjectTableCol.MAX_PRIORITY,
+        ProjectTableCol.INVOLVED_TEAM,
+        ProjectTableCol.LAST_UPDATE
+      ],
+      order: {
+        id: ProjectTableCol.ID,
+        dataKey: '',
+        isSortable: true,
+        direction: 'asc'
+      },
+      search: ''
+    },
     notificationsTable: {
       start: 0,
       page: 25,

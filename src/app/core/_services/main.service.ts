@@ -210,4 +210,14 @@ export class GlobalService {
       arr
     );
   }
+
+  /**
+   * Helper Update function
+   * @param option - method used. ie. /abort /reset /importFile
+   * @param arr - fields to be updated
+   * @returns Object
+   **/
+  test(): Observable<any> {
+    return this.http.get('http://localhost:3000/template');
+  }
 }

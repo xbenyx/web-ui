@@ -2,6 +2,7 @@
 import { SafeHtml } from '@angular/platform-browser';
 
 export type DataType =
+  | 'projects'
   | 'agents'
   | 'agents-status'
   | 'agents-assign'
