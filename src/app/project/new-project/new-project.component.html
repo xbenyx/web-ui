@@ -1,0 +1,27 @@
+<app-table>
+  <app-page-title [title]="pageTitle"></app-page-title>
+  <mat-stepper #stepper>
+    <mat-step label="New Project" state="creation">
+      <br>
+      <form [formGroup]="form">
+
+        <input-text title="Project Name" formControlName="project_name" [isRequired]="true"></input-text>
+        <input-color title="Color" formControlName="color"></input-color>
+        <input-check title="Restricted" formControlName="restricted" [tooltip]="'Restrict access and use of agents to only members'"></input-check>
+
+      </form>
+      <br>
+      <div>
+        <button-submit mat-button (click)="stepper.next()" name="Next"></button-submit>
+      </div>
+    </mat-step>
+    <mat-step label="Authorization" state="auth">
+
+
+      <div>
+        <button-submit mat-button (click)="stepper.next()" name="Next"></button-submit>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  </app-table>
+

@@ -73,6 +73,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   rebuildMenu(): void {
     this.mainMenu = [
+      this.getProjectsMenu(),
       this.getAgentsMenu(),
       this.getTasksMenu(),
       this.getHashlistsMenu(),
@@ -82,6 +83,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.getUsersMenu(),
       this.getAdminMenu()
     ];
+  }
+
+  /**
+   * Retrieves the 'Projects' menu item.
+   * @returns A MainMenuItem for the 'Projects' menu.
+   */
+  getProjectsMenu(): MainMenuItem {
+    return {
+      display: true,
+      label: HeaderMenuLabel.PROJECTS,
+      actions: [
+        [
+          {
+            label: HeaderMenuLabel.SHOW_PROJECTS,
+            routerLink: ['projects', 'show-projects']
+          }
+        ]
+      ]
+    };
   }
 
   /**

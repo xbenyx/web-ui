@@ -1,8 +1,10 @@
 export const HeaderMenuAction = {
   LOGOUT: 'logout'
-}
+};
 
 export const HeaderMenuLabel = {
+  PROJECTS: 'Projects',
+  SHOW_PROJECTS: 'Show Projects',
   AGENTS: 'Agents',
   SHOW_AGENTS: 'Show Agents',
   AGENT_STATUS: 'Agent Status',
@@ -33,5 +35,5 @@ export const HeaderMenuLabel = {
   BINARIES: 'Binaries',
   CRACKERS: 'Crackers',
   PREPROCESSORS: 'Preprocessors',
-  AGENT_BINARIES: 'Agent Binaries',
-}
+  AGENT_BINARIES: 'Agent Binaries'
+};
