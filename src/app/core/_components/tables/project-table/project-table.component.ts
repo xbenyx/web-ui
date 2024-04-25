@@ -19,6 +19,7 @@ import { TableDialogComponent } from '../table-dialog/table-dialog.component';
 import { TaskWrapper } from 'src/app/core/_models/task-wrapper.model';
 import { TasksDataSource } from 'src/app/core/_datasources/tasks.datasource';
 import { Project } from 'src/app/core/_models/project.model';
+import { ProjectsDataSource } from 'src/app/core/_datasources/project.datasource';
 
 @Component({
   selector: 'project-table',
@@ -29,13 +30,13 @@ export class ProjectsTableComponent
   implements OnInit, OnDestroy
 {
   tableColumns: HTTableColumn[] = [];
-  dataSource: TasksDataSource;
+  dataSource: ProjectsDataSource;
   isArchived = false;
 
   ngOnInit(): void {
     this.setColumnLabels(ProjectTableColumnLabel);
     this.tableColumns = this.getColumns();
-    this.dataSource = new TasksDataSource(this.cdr, this.gs, this.uiService);
+    this.dataSource = new ProjectsDataSource(this.cdr, this.gs, this.uiService);
     this.dataSource.setColumns(this.tableColumns);
     this.dataSource.loadAll();
   }

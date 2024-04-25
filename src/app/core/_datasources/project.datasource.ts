@@ -19,8 +19,7 @@ export class ProjectsDataSource extends BaseDataSource<
         finalize(() => (this.loading = false))
       )
       .subscribe((response) => {
-        console.log(response);
-        this.setData(response);
+        this.setData(response[0]);
       });
   }
 
